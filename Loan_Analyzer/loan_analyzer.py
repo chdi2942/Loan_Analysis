@@ -110,8 +110,8 @@ new_loan = {
 #    This function should include parameters for `future_value`, `remaining_months`, and the `annual_discount_rate`
 #    The function should return the `present_value` for the loan.
 def calculate_pv(remaining_months, annual_discount_rate, future_value):
-    new_present_value = new_loan.get("future_value") / (1+(.2/12)) ** new_loan.get("remaining_months")
-    return new_present_value
+    present_value = future_value / (1+(annual_discount_rate/12)) ** remaining_months  
+    return present_value
 
 # @TODO: Use the function to calculate the present value of the new loan given below.
 #    Use an `annual_discount_rate` of 0.2 for this new loan calculation.
@@ -193,8 +193,6 @@ output_path = Path("inexpensive_loans.csv")
 
 # @TODO: Use the csv library and `csv.writer` to write the header row
 # and each row of `loan.values()` from the `inexpensive_loans` list.
-import csv
-from pathlib import Path
 
 with open(output_path, 'w', newline='') as csvfile:
     csvwriter = csv.writer(csvfile)
