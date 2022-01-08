@@ -115,7 +115,7 @@ def calculate_pv(remaining_months, annual_discount_rate, future_value):
 
 # @TODO: Use the function to calculate the present value of the new loan given below.
 #    Use an `annual_discount_rate` of 0.2 for this new loan calculation.
-present_value = calculate_pv(12,.2,1000)
+present_value = format(calculate_pv(12,.2,1000), '.2f')
 print(f"The present value of the loan is: {present_value}")
 
 
@@ -196,4 +196,13 @@ output_path = Path("inexpensive_loans.csv")
 import csv
 from pathlib import Path
 
-with open(output_path, 'w', newline='') as csvfile
+with open(output_path, 'w', newline='') as csvfile:
+    csvwriter = csv.writer(csvfile)
+
+    csvwriter.writerow(header)
+
+    for row in inexpensive_loans:
+        csvwriter.writerow(row.values())
+
+
+
